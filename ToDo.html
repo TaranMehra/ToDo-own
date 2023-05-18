@@ -1,0 +1,453 @@
+<html>
+  <head><title>Own ToDo List</title>
+  <script src="ToDo.js"defer></script>
+  <style>
+    *{
+      margin: 0px;
+      padding: 0px;
+    }
+    html{
+       font-size: 10px;
+    }
+    .main-container{
+     display: flex;
+     flex-direction: column;
+       color: white;
+       height: 100vh;
+       width: 100vw;
+       }
+    .main-header{
+       background-color: black;
+       display: grid;
+       justify-content: center;
+       align-content: center;
+       height:20vh ;
+    }
+     .navbar{
+          display: grid;
+          background-color: black;
+          max-width: 100vw;
+          }
+         
+   
+     .btn{
+         border: none;
+         border-radius:  50rem;
+         min-width: 30vw;
+         background-color: black
+         color: #07d3ac;
+         }
+         .currentbtn{
+         border: none;
+         border-radius:  50rem;
+         min-width: 30vw;
+         background-color: black;
+         color: #07d3ac;
+         box-shadow: 
+         5px 5px 15px #00ccff44 ;
+         box-shadow: 
+         -19px -19px 45px #07d3ac black  ;
+         }
+         .container{
+           flex: 1;
+           display: grid;
+           grid-template-rows: 100% 100%;
+           overflow-y: auto;
+           background-color: black;
+           
+           }
+           .min-container{
+            min-width: 100vw;
+            display: flex;
+            justify-content: center;
+            box-sizing: content-box;
+            z-index: 34;
+            position: relative;
+            }
+            .page-container{
+            display: grid;
+             align-items: center;
+             /* margin-top: 34px; */
+             grid-template-columns: repeat(3,100vw);
+             grid-column-gap: 6rem;
+             width: 100%;
+             height: 100%;
+             overflow-x: auto;
+             scroll-snap-type: x mandatory;
+             scroll-snap-stop: start;
+            }
+            
+          .wyt{
+           /* margin-top: 45px; */
+           box-sizing: border-box;
+            padding: 2rem;
+            margin: 14px;
+            /* border-radius: 2rem; */
+            height: 100%;
+            /* width: 95vw; */
+            /* scroll-margin: 0px 0px 0px 20px; */
+            /* scroll-margin-left: 23px; */
+            scroll-snap-align: center;
+            }
+           .weeklytodo{
+            display: grid;
+            background-image: url('/weekly.jpeg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            text-align: center;
+            background-color: red;
+            grid-auto-flow: column ;
+            grid-auto-columns: 95%;
+            grid-column-gap: auto;
+            /* grid-column-gap: 8rem; */
+            align-items: center;
+            scroll-snap-type: x mandatory;
+            overflow-x:auto;
+            }
+            .click_to_add_list{
+              color: orange;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              flex-direction: column;
+              position: relative;
+            }
+            .click_to_add{
+             display: flex;
+             justify-content: center;
+             align-items:  center;
+             background-image: url('/weekly.jpeg');
+             background-size: cover;
+             background-repeat: no-repeat;
+             height: 15vh;
+             width: 20vh;
+             color: red;
+             justify-self: center;
+             scroll-snap-align: center;
+             box-sizing: border-box;
+             box-shadow: 
+             -1px -1px 5px rgb(255,255,255,0.2)   ,
+             1px 1px 3px rgb(0,0,0,0.1),
+             inset -3px -3px 3px rgb(255,255,255,0.2),
+             inset 3px 3px 3px rgb(0,0,0,0.1);
+             z-index: 100;
+             }
+            
+            .eachlist{
+             background: linear-gradient rgb(255,255,255,0.1), rgb(255,255,255,0);
+             webkit-backdrop-filter:blur(50px);
+             /* margin: 12px; */
+             color: white;
+             height: 45vh;
+            /* scroll-margin-left: 334px; */
+            justify-self: center;
+             min-width: 70%;
+             overflow-y: auto;
+             scroll-snap-align: center;
+             box-shadow: 
+             -5px -5px 5px rgb(255,255,255,0.2) ,
+             13px 13px 33px rgb(0,0,0,0.1),
+             inset -3px -3px 3px rgb(255,255,255,0.2),
+             inset 3px 3px 3px rgb(0,0,0,0.1);
+              
+            }
+            
+            .todaytodo{
+             display: grid;
+            background-image: url('/todaypage.jpeg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            text-align: center;
+            background-color: red;
+            grid-auto-flow: column ;
+            grid-auto-columns: 95%;
+            grid-column-gap: auto;
+            /* grid-column-gap: 8rem; */
+            align-items: center;
+            scroll-snap-type: x mandatory;
+            overflow-x:auto;
+             }
+             .todaytodo .click_to_add_list .click_to_add{
+               background-image: url('/todaypage.jpeg');
+               background-size: cover;
+               background-repeat: no-repeat;
+             }
+             
+           .yesterdaytodo{
+               display: grid;
+            background-image: url('/yesterday.jpeg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            text-align: center;
+            background-color: red;
+            grid-auto-flow: column ;
+            grid-auto-columns: 95%;
+            grid-column-gap: auto;
+            /* grid-column-gap: 8rem; */
+            align-items: center;
+            scroll-snap-type: x mandatory;
+            overflow-x:auto;
+           }
+           .this{
+             color: red;
+             box-shadow: 
+             -5px -5px 5px rgb(255,255,255,0.2) ,
+             13px 13px 33px rgb(34,30,0,2.1)  inset,
+             inset -3px -3px 3px rgb(255,255,255,0.2),
+             inset 3px 3px 3px rgb(0,0,0,0.1);
+           }
+           .search{
+            display: flex;
+            flex-direction: column;
+            justify-content:flex-start;
+            align-items: center;
+            font-size: 2.2rem;
+            width: 100vw;
+            max-height: 100vh;
+            color: black;
+            background-color: black;
+            color: #07d3ac;
+            box-shadow: 
+            15px 15px 15px #00ccff44 inset;
+            }
+            .search-header{
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             flex-direction: column;
+             row-gap: 20px;
+              min-height: 12vh;
+              min-width: 100vw;
+            }
+            #enterdate{
+              background-color: red;
+              color: white;
+              height: 3vh;
+              width: 32vw;
+            }
+            .element{
+             display: grid;
+             align-items: center;
+             box-sizing: border-box;
+             grid-auto-flow: column ;
+             grid-auto-columns: 95%;
+             grid-column-gap: auto;
+             padding: 2rerm;
+             width: 95% ;
+             height: 100%;
+             margin-top: 2rem;
+             overflow-x: auto;
+             scroll-snap-type: x mandatory;
+            } 
+            .single_day{
+              scroll-snap-align:center ;
+            }
+            .input_page{
+             z-index: 45;
+             position: absolute;
+             top: 0px;
+             padding: 3rem;
+              align-self: center;
+              /* row-gap: 5%; */
+              color: red;
+              max-height: 25vh;
+              /* max-width: 70vw; */
+             display: none;
+             background-color: yellow;
+             grid-template-columns: 2fr 1fr;
+             
+            }
+              .input_page text{
+                /* color: blue; */
+              }
+              #input_taskbar{
+                background-color: black;
+                color: white;
+                height: 34px;
+              }
+    
+    @media(max-width:300px){
+       .main-container{
+          font-size: 1rem;
+          background-color: red;
+       }
+       .main-header{
+         
+         }
+         .navbar{
+           
+         }
+         .container{
+           
+         }
+         
+    }
+    
+    @media(min-width:300px) and (max-width:500px){
+       .main-container{
+          font-size: 2rem;
+          background-color: green;
+       }
+       
+      
+         .container{
+           display: grid;
+           justify-content: center;
+         }
+         .main-header{
+          background-color: black;
+          height: 20vh;
+          display: grid;
+          justify-content: center;
+          align-content: center;
+          padding-top: 5vw;
+         }
+        .navbar{
+          padding: 2vw;
+          background-color: black;
+          max-width: 100vw;
+          grid-row-gap: 2rem;
+          }
+        /* .btn{
+         border: none;
+         border-radius:  50rem;
+         min-width: 30vw;
+         background-color: black;
+         color: #07d3ac;
+         box-shadow: 
+         5px 5px 15px #00ccff44 ;
+         box-shadow: 
+         -19px -19px 45px #07d3ac black  ;
+         } */
+         
+          .search{
+            font-size: 2.2rem;
+            color: #07d3ac;
+            box-shadow: 
+            3rem 3rem 4rem #00ccff44 inset;
+            }
+    }
+    @media(min-width:500px) and (max-width:800px){
+       .main-container{
+          font-size: 1rem;
+          background-color: blue;
+       }
+       .main-header{
+         
+         }
+      .navbar{
+          grid-template-columns: repeat(3,21px);
+          grid-column-gap: 29vw;
+          justify-items: center;
+                 }    
+                
+      /* .btn{
+          height:  2rem;
+          box-shadow: 
+         -8.5px -6.3px 15px  #056e884c inset ;
+          }          */
+          
+         .container{
+           
+         }
+         /* .search{
+            font-size: 2.2rem;
+            border-radius:  50rem;
+            background-color: black;
+            color: #07d3ac;
+            box-shadow: 
+            3rem 3rem 4rem #00ccff44 inset;
+            } */
+         
+    }
+    @media(min-width:800px){
+       .main-container{
+          font-size: 3rem;
+          background-color: black;
+        }
+       .main-header{}
+         .navbar{
+          grid-template-columns: repeat(3,21px);
+          grid-column-gap: 29vw;
+          justify-items: center;
+                 }    
+         /* .btn{
+          height:  9rem;
+         font-size: 2.7rem;
+         box-shadow: 
+                 -19px -19px 45px  #056e884c inset ;
+         } */
+         .container{
+           
+         }
+         .search{
+            font-size: 4.2rem;
+            background-color: black;
+            color: #07d3ac;
+            box-shadow: 
+            3rem 3rem 4rem #00ccff44 inset;
+            }
+         
+    }
+  </style>
+  </head>
+  <body>
+     <div class="main-container">
+      <header class="main-header">
+      <nav class="navbar">
+       <button class="btn weekly justweekly">Weekly</button>
+       <button class="btn today justtoday">Today</button>
+       <button class="btn yesterday justyesterday">Yesterday</button>
+      </nav>
+    </header>
+        <div class="container">
+          <div class="min-container">
+           <div class="input_page">
+             <input type="text" id="input_taskbar" placeholder="Enter the task">
+             <button class="submit_button" type="submit" value="Add Task">Add todo</button>
+             <span id="input_null"></span>
+             </div>
+           <div class="page-container">
+               <div class="weeklytodo wyt justweekly">
+           <li class=" weeklytodolist click_to_add_list">
+            <div class="click_to_add">
+             + Add Task
+            </div>
+            </li>
+            
+           <li class="weeklytodolist eachlist ">weekly todo list1</li>
+           
+           <li class="weeklytodolist eachlist ">weekly todo list2</li>
+           
+           </div>
+            
+          <div class="todaytodo wyt justtoday">
+             
+             <li class=" todaytodolist  click_to_add_list">
+            
+             <div class="click_to_add">+ Add Task</div>
+            </li>
+           <li class="todaytodolist eachlist ">today todo list2</li>
+           <li class="todaytodolist eachlist ">today todo list3</li>
+          </div>
+          <div class="yesterdaytodo wyt justyesterday">
+          <li class="yesterdaytodolist eachlist click_to_add_list">yesterday todo list1</li>
+           <li class="yesterdaytodolist eachlist ">yesterday todo list2</li>
+           <li class="yesterdaytodolist eachlist ">yesterday todo list3</li></div>
+          </div>
+          </div>
+          <div class="search">
+           <div class="search-header">
+           <h>Enter the date </h>
+          <input id="enterdate" type="date" value="DD/MM/YY" placeholder="wqejqw"></div>
+          <div class="element">
+           </li>
+           <li class="single_day eachlist">weekly todo list9</li>
+           <li class="single_day eachlist">weekly todo list10</li>
+           <li class="single_day eachlist">weekly todo list11</li>
+          </div>
+          </div>
+        </div>
+     </div>
+  </body>
+</html>
